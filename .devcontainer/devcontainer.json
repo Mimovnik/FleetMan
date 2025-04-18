@@ -1,5 +1,22 @@
 {
-  "name": "Fleet Api dev",
+  "name": "FleetMan dev",
   "image": "mcr.microsoft.com/devcontainers/dotnet:8.0",
-  "postCreateCommand": "dotnet restore"
+  "postCreateCommand": "dotnet restore",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "MarwanAlwan.dv",
+        "humao.rest-client"
+      ],
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "zsh",
+        "terminal.integrated.profiles.linux": {
+          "zsh": {
+            "path": "/bin/zsh"
+          }
+        }
+      }
+    }
+  }
 }
+
