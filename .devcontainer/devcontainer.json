@@ -1,0 +1,5 @@
+{
+  "name": "Fleet Api dev",
+  "image": "mcr.microsoft.com/devcontainers/dotnet:8.0",
+  "postCreateCommand": "dotnet restore"
+}
