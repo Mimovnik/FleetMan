@@ -7,7 +7,8 @@
       "extensions": [
         "MarwanAlwan.dv",
         "humao.rest-client",
-        "Bob0911.namespace-starter"
+        "Bob0911.namespace-starter",
+        "ms-dotnettools.csdevkit"
       ],
       "settings": {
         "terminal.integrated.defaultProfile.linux": "zsh",
