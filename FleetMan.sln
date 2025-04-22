@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FleetMan.Domain", "FleetMan
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FleetMan.Infrastructure", "FleetMan.Infrastructure\FleetMan.Infrastructure.csproj", "{298955D0-DE53-4827-90F8-125CDDE7D814}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FleetMan.Application.Tests", "FleetMan.Application.Tests\FleetMan.Application.Tests.csproj", "{544B5D82-0438-4EF3-A700-2C0DCD197A5F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,5 +44,9 @@ Global
 		{298955D0-DE53-4827-90F8-125CDDE7D814}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{298955D0-DE53-4827-90F8-125CDDE7D814}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{298955D0-DE53-4827-90F8-125CDDE7D814}.Release|Any CPU.Build.0 = Release|Any CPU
+		{544B5D82-0438-4EF3-A700-2C0DCD197A5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{544B5D82-0438-4EF3-A700-2C0DCD197A5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{544B5D82-0438-4EF3-A700-2C0DCD197A5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{544B5D82-0438-4EF3-A700-2C0DCD197A5F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
