@@ -6,7 +6,8 @@
     "vscode": {
       "extensions": [
         "MarwanAlwan.dv",
-        "humao.rest-client"
+        "humao.rest-client",
+        "Bob0911.namespace-starter"
       ],
       "settings": {
         "terminal.integrated.defaultProfile.linux": "zsh",
