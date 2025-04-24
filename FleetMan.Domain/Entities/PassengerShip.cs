@@ -2,7 +2,7 @@ using ErrorOr;
 
 namespace FleetMan.Domain.Entities;
 
-class PassengerShip : Ship
+public class PassengerShip : Ship
 {
     public List<string> Passengers { get; }
 
