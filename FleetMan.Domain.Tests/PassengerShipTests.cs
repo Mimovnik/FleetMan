@@ -24,6 +24,21 @@ public class PassengerShipTests
         Assert.Empty(result.Value.Passengers);
     }
 
+    [Fact]
+    public void Given_ValidInput_When_CreatingPassengerShip_Then_PassengerListIsEmpty()
+    {
+        var imoNumber = ImoNumber.Create("9074729").Value;
+        var name = "EmptyCruiser";
+        var length = 100;
+        var width = 20;
+
+        var result = PassengerShip.Create(imoNumber, name, length, width);
+
+        Assert.False(result.IsError);
+        Assert.NotNull(result.Value.Passengers);
+        Assert.Empty(result.Value.Passengers);
+    }
+
     [Theory]
     [InlineData(-123.5)]
     [InlineData(-10.0)]
