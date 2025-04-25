@@ -25,5 +25,19 @@ public static class Errors
         public static Error InvalidWidth => Error.Validation(
             code: "Ship.NegativeWidth",
             description: "Ship width must be greater than 0.");
+
+        public static class TankerShip
+        {
+            public static Error NoTanks => Error.Validation(
+                code: "TankerShip.NoTanks",
+                description: "A tanker must have at least one tank.");
+        }
+    }
+
+    public static class Tank
+    {
+        public static Error InvalidCapacity => Error.Validation(
+            code: "Tank.NegativeCapacity",
+            description: "Tank capacity must be greater than 0.");
     }
 }
