@@ -1,0 +1,28 @@
+@host = http://localhost:5127
+POST {{host}}/ships/passenger
+Content-Type: application/json
+
+{
+  "imoNumber": "0000000",
+  "name": "Titanic",
+  "length": 50,
+  "width": 10
+}
+
+// Expected response for the first request:
+# HTTP/1.1 200 OK
+
+# {
+#   "imoNumber": "0000000",
+#   "name": "Titanic",
+# }
+
+// Expected response for any subsequent request with the same IMO number:
+# HTTP/1.1 409 Conflict
+
+# {
+#  ...
+#  "title": "A ship with this IMO number already exists.",
+#  "status": 409,
+#  ...
+# }

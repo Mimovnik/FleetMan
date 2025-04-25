@@ -1,13 +1,19 @@
+using FleetMan.Api;
+using FleetMan.Application;
+using FleetMan.Infrastructure;
+
 var builder = WebApplication.CreateBuilder(args);
 {
-
+    builder.Services
+        .AddApi()
+        .AddApplication()
+        .AddInfrastructure();
 }
 
 var app = builder.Build();
 {
-    // app.UseHttpsRedirection();
-
-    // app.Run();
+    app.MapControllers();
+    app.Run();
 }
 
 

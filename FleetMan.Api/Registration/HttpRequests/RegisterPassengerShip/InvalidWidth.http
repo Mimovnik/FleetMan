@@ -1,0 +1,25 @@
+@host = http://localhost:5127
+POST {{host}}/ships/passenger
+Content-Type: application/json
+
+{
+  "imoNumber": "0001004",
+  "name": "Titanic",
+  "length": 50,
+  "width": -10
+}
+
+// Expected response:
+# HTTP/1.1 400 Bad Request
+
+# {
+#   ...
+#   "title": "One or more validation errors occurred.",
+#   "status": 400,
+#   "errors": {
+#     "Ship.NegativeWidth": [
+#       "Ship width must be greater than 0."
+#     ]
+#   },
+#   ...
+# },
