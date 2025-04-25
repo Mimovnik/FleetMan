@@ -2,7 +2,7 @@
 
 ## Status
 
-- todo
+- wip
 
 ## Description
 Register a new tanker ship with ship details and tanks. The number of tanks as well as capacity of each tank should be specified.
@@ -13,7 +13,9 @@ Register a new tanker ship with ship details and tanks. The number of tanks as w
 - `name`
 - `length`
 - `width`
-- `tanks` - list of tanks (each tank has it's capacity, fuel type and fill)
+- `tanks` - list of tanks where each tank has:
+    - `capacity`
+    - `fuelType` - either diesel or heavy fuel
 
 ## Output
 - `imoNumber`
@@ -28,8 +30,8 @@ Register a new tanker ship with ship details and tanks. The number of tanks as w
 - `length` must be greater then 0
 - `width` must be greater then 0
 - `tanks` list must be non-empty
-- `tanks` fuel type of each tank must be either diesel or heavy fuel
-- `tanks` capacity of each tank must be greater then 0
+- `tanks:fuelType` must be either diesel or heavy fuel
+- `tanks:capacity` capacity must be greater then 0
 
 ## Domain Logic
 
