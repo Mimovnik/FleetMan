@@ -27,6 +27,9 @@ dotnet test
 - ErrorOr - return result type instead of throwing exceptions
 - FluentValidation - validate commands and queries
 - MediatR - handle commands and queries
+- Mapster - request to command/query mapping
+- xUnit - unit testing
+- FluentAssertions - assertions that are human-readable
 
 ## Architecture
 
