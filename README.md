@@ -56,3 +56,9 @@ Keeping Domain layer independent of other layers makes it future-proof.
 It makes it possible to change the api, database management system, application flow or other non-domain code without interfering with the domain layer.
 
 The feature segregation makes it easier to locate classes operating within certain functionality thus faster development and easier onboarding of new developers.
+
+## Documentation
+
+- [Task that defines this project](docs/task-pl.md) (in polish)
+- [Api endpoints](docs/Endpoints.md)
+- [Use cases](docs/UseCases)
