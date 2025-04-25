@@ -1,5 +1,9 @@
 # Use Case: Register Passenger Ship
 
+## Status
+
+- done
+
 ## Description
 Register a new passenger ship ship details and an empty passenger list.
 

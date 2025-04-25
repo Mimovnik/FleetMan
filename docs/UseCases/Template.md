@@ -1,5 +1,9 @@
 # Use Case: <name_of_the_use_case>
 
+## Status
+
+- done/wip/todo
+
 ## Description
 <!-- A short description of what this use case accomplishes. -->
 

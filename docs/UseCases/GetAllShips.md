@@ -1,5 +1,10 @@
 # Use Case: Get All Ships
 
+
+## Status
+
+- todo
+
 ## Description
 
 Fetches a list of all registered ships. Both passenger ships and tanker ships.
