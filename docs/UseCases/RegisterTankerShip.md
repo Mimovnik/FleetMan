@@ -2,7 +2,7 @@
 
 ## Status
 
-- wip
+- done
 
 ## Description
 Register a new tanker ship with ship details and tanks. The number of tanks as well as capacity of each tank should be specified.
