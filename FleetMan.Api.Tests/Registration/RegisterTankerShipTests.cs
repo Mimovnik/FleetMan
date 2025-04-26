@@ -130,8 +130,8 @@ public class RegisterTankerShipTests(WebApplicationFactory<Program> factory) : I
 
         problemDetails.Errors.Should().NotBeNull();
 
-        problemDetails.Errors.Should().ContainKey("Ship.InvalidImoFormat");
-        problemDetails.Errors["Ship.InvalidImoFormat"].Should().Contain("The IMO number must be 7 characters long and contain only digits.");
+        problemDetails.Errors.Should().ContainKey("ImoNumber.InvalidFormat");
+        problemDetails.Errors["ImoNumber.InvalidFormat"].Should().Contain("The IMO number must be 7 characters long and contain only digits.");
     }
 
     [Theory]
@@ -170,8 +170,8 @@ public class RegisterTankerShipTests(WebApplicationFactory<Program> factory) : I
 
         problemDetails.Errors.Should().NotBeNull();
 
-        problemDetails.Errors.Should().ContainKey("Ship.InvalidImoFormat");
-        problemDetails.Errors["Ship.InvalidImoFormat"].Should().Contain("The IMO number must be 7 characters long and contain only digits.");
+        problemDetails.Errors.Should().ContainKey("ImoNumber.InvalidFormat");
+        problemDetails.Errors["ImoNumber.InvalidFormat"].Should().Contain("The IMO number must be 7 characters long and contain only digits.");
     }
 
     [Theory]
@@ -215,8 +215,8 @@ public class RegisterTankerShipTests(WebApplicationFactory<Program> factory) : I
         problemDetails.Status.Should().Be(400);
 
         problemDetails.Errors.Should().NotBeNull();
-        problemDetails.Errors.Should().ContainKey("Ship.InvalidImoChecksum");
-        problemDetails.Errors["Ship.InvalidImoChecksum"].Should().Contain("The provided IMO number has invalid checksum.");
+        problemDetails.Errors.Should().ContainKey("ImoNumber.InvalidChecksum");
+        problemDetails.Errors["ImoNumber.InvalidChecksum"].Should().Contain("The provided IMO number has invalid checksum.");
     }
 
     [Theory]

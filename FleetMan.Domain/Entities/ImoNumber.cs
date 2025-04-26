@@ -16,22 +16,22 @@ public sealed class ImoNumber
     {
         if (string.IsNullOrWhiteSpace(value))
         {
-            return Errors.Ship.InvalidImoFormat;
+            return Errors.ImoNumber.InvalidFormat;
         }
 
         if (value.Length != 7)
         {
-            return Errors.Ship.InvalidImoFormat;
+            return Errors.ImoNumber.InvalidFormat;
         }
 
         if (!value.All(char.IsDigit))
         {
-            return Errors.Ship.InvalidImoFormat;
+            return Errors.ImoNumber.InvalidFormat;
         }
 
         if (!HasValidChecksum(value))
         {
-            return Errors.Ship.InvalidImoChecksum;
+            return Errors.ImoNumber.InvalidChecksum;
         }
 
         return new ImoNumber(value);

@@ -10,8 +10,8 @@ public class RegisterTankerShipCommandValidator
     public RegisterTankerShipCommandValidator()
     {
         RuleFor(x => x.ImoNumber)
-            .Length(7).WithMessage(Errors.Ship.InvalidImoFormat.Description)
-            .Matches(@"^\d{7}$").WithMessage(Errors.Ship.InvalidImoFormat.Description);
+            .Length(7).WithMessage(Errors.ImoNumber.InvalidFormat.Description)
+            .Matches(@"^\d{7}$").WithMessage(Errors.ImoNumber.InvalidFormat.Description);
 
         RuleFor(x => x.Length)
             .GreaterThan(0).WithMessage(Errors.Ship.InvalidLength.Description);

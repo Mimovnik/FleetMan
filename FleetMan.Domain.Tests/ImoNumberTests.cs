@@ -67,7 +67,7 @@ public class ImoNumberTests
         var result = ImoNumber.Create(imo);
 
         Assert.True(result.IsError);
-        Assert.Equal(Errors.Errors.Ship.InvalidImoFormat, result.FirstError);
+        Assert.Equal(Errors.Errors.ImoNumber.InvalidFormat, result.FirstError);
     }
 
 
@@ -87,6 +87,6 @@ public class ImoNumberTests
         var result = ImoNumber.Create(imo);
 
         Assert.True(result.IsError);
-        Assert.Equal(Errors.Errors.Ship.InvalidImoChecksum, result.FirstError);
+        Assert.Equal(Errors.Errors.ImoNumber.InvalidChecksum, result.FirstError);
     }
 }

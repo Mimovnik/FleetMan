@@ -43,7 +43,7 @@ public abstract class RegisterShipCommandValidatorTests<TCommand, TValidator>
         var result = _validator.TestValidate(command);
 
         result.ShouldHaveValidationErrorFor(x => x.ImoNumber)
-              .WithErrorMessage(Errors.Ship.InvalidImoFormat.Description);
+              .WithErrorMessage(Errors.ImoNumber.InvalidFormat.Description);
     }
 
     [Theory]
@@ -62,7 +62,7 @@ public abstract class RegisterShipCommandValidatorTests<TCommand, TValidator>
         var result = _validator.TestValidate(command);
 
         result.ShouldHaveValidationErrorFor(x => x.ImoNumber)
-              .WithErrorMessage(Errors.Ship.InvalidImoFormat.Description);
+              .WithErrorMessage(Errors.ImoNumber.InvalidFormat.Description);
     }
 
     [Theory]
@@ -85,7 +85,7 @@ public abstract class RegisterShipCommandValidatorTests<TCommand, TValidator>
         var result = _validator.TestValidate(command);
 
         result.ShouldHaveValidationErrorFor(x => x.ImoNumber)
-              .WithErrorMessage(Errors.Ship.InvalidImoFormat.Description);
+              .WithErrorMessage(Errors.ImoNumber.InvalidFormat.Description);
     }
 
     [Theory]
@@ -104,7 +104,7 @@ public abstract class RegisterShipCommandValidatorTests<TCommand, TValidator>
         var result = _validator.TestValidate(command);
 
         result.ShouldHaveValidationErrorFor(x => x.ImoNumber)
-              .WithErrorMessage(Errors.Ship.InvalidImoFormat.Description);
+              .WithErrorMessage(Errors.ImoNumber.InvalidFormat.Description);
     }
 
     [Theory]

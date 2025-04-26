@@ -10,14 +10,6 @@ public static class Errors
             code: "Ship.DuplicateImo",
             description: "A ship with this IMO number already exists.");
 
-        public static Error InvalidImoFormat => Error.Validation(
-            code: "Ship.InvalidImoFormat",
-            description: "The IMO number must be 7 characters long and contain only digits.");
-
-        public static Error InvalidImoChecksum => Error.Validation(
-            code: "Ship.InvalidImoChecksum",
-            description: "The provided IMO number has invalid checksum.");
-
         public static Error InvalidLength => Error.Validation(
             code: "Ship.NegativeLength",
             description: "Ship length must be greater than 0.");
@@ -32,6 +24,17 @@ public static class Errors
                 code: "TankerShip.NoTanks",
                 description: "A tanker must have at least one tank.");
         }
+    }
+
+    public static class ImoNumber
+    {
+        public static Error InvalidFormat => Error.Validation(
+            code: "ImoNumber.InvalidFormat",
+            description: "The IMO number must be 7 characters long and contain only digits.");
+
+        public static Error InvalidChecksum => Error.Validation(
+            code: "ImoNumber.InvalidChecksum",
+            description: "The provided IMO number has invalid checksum.");
     }
 
     public static class Tank
