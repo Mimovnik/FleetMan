@@ -2,7 +2,7 @@ using ErrorOr;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 
-namespace FleetMan.Api;
+namespace FleetMan.Api.Controllers;
 
 [ApiController]
 public class ApiController : ControllerBase

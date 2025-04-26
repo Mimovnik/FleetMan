@@ -2,7 +2,7 @@ using FleetMan.Application.Registration.RegisterPassengerShip;
 using FleetMan.Contracts.Registration;
 using Mapster;
 
-namespace FleetMan.Api.Registration;
+namespace FleetMan.Api.Controllers;
 
 public static class MapsterConfig
 {

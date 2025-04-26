@@ -7,7 +7,7 @@ using MapsterMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
-namespace FleetMan.Api.Registration;
+namespace FleetMan.Api.Controllers;
 
 [Route("[controller]")]
 public class ShipsController(IMapper mapper, ISender mediator) : ApiController
