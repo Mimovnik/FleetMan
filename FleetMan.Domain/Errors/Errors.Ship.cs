@@ -47,4 +47,11 @@ public static class Errors
             code: "Tank.InvalidFuelType",
             description: "Fuel type must be one of: 'Diesel', 'HeavyFuel'.");
     }
+
+    public static class Passenger
+    {
+        public static Error InvalidName => Error.Validation(
+            code: "Passenger.InvalidName",
+            description: "Passenger name cannot be empty.");
+    }
 }

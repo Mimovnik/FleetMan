@@ -4,12 +4,18 @@ namespace FleetMan.Domain.Entities;
 
 public class PassengerShip : Ship
 {
-    public List<string> Passengers { get; }
+    public List<Passenger> Passengers { get; }
 
-    private PassengerShip(ImoNumber imoNumber, string name, double length, double width, List<string> passengers)
+    private PassengerShip(ImoNumber imoNumber, string name, double length, double width, List<Passenger> passengers)
         : base(imoNumber, name, length, width)
     {
         Passengers = passengers;
+    }
+
+    public void SetPassengerList(List<Passenger> passengers)
+    {
+        Passengers.Clear();
+        Passengers.AddRange(passengers);
     }
 
     public static ErrorOr<PassengerShip> Create(
