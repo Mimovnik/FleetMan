@@ -18,6 +18,51 @@ public class UpdatePassengerListCommandHandlerTests
         _handler = new UpdatePassengerListCommandHandler(_repositoryMock.Object);
     }
 
+    [Theory]
+    [InlineData("")]
+    [InlineData("12345678")]
+    [InlineData("-1234567")]
+    [InlineData("1a34b67")]
+    [InlineData("123456\u20AC")]
+    public async Task Handle_CommandHasInvalidImoNumberFormat_ReturnsInvalidImoNumberError(string imo)
+    {
+        var command = new UpdatePassengerListCommand(imo, [
+            "John Doe",
+            "Jane Boe",
+            "Jack Noe"
+        ]);
+
+        var result = await _handler.Handle(command, CancellationToken.None);
+
+        result.IsError.Should().BeTrue();
+        result.Errors.Should().ContainSingle(e => e == Errors.ImoNumber.InvalidFormat);
+    }
+    
+
+    [Fact]
+    public async Task Handle_CommandHasEmptyPassengerNames_ReturnsInvalidNameError()
+    {
+        _repositoryMock
+            .Setup(r => r.GetByImoNumberAsync(It.IsAny<ImoNumber>()))
+            .ReturnsAsync(PassengerShip.Create(
+                ImoNumber.Create("9074729").Value,
+                name: "Passenger Ship",
+                length: 300,
+                width: 50
+            ).Value);
+
+        var command = new UpdatePassengerListCommand("9074729", [
+            "",
+            "Jane Boe",
+            string.Empty
+        ]);
+
+        var result = await _handler.Handle(command, CancellationToken.None);
+
+        result.IsError.Should().BeTrue();
+        result.Errors.Should().ContainSingle(e => e == Errors.Passenger.InvalidName);
+    }
+
     [Fact]
     public async Task Handle_ShipIsOfPassengerType_ReturnsNoError()
     {
