@@ -8,7 +8,7 @@ public static class MapsterConfig
 {
     public static void ConfigureMappings()
     {
-        TypeAdapterConfig<RegisterPassengerShipRequest, RegisterPassengerShipCommand>
+        TypeAdapterConfig<RegisterShipRequest, RegisterPassengerShipCommand>
             .NewConfig()
             .Map(dest => dest.ImoNumber, src => src.ImoNumber)
             .Map(dest => dest.Name, src => src.Name)

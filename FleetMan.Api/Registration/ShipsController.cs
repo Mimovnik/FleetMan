@@ -1,3 +1,4 @@
+using ErrorOr;
 using FleetMan.Application.Registration.Common;
 using FleetMan.Application.Registration.RegisterPassengerShip;
 using FleetMan.Application.Registration.RegisterTankerShip;
@@ -14,30 +15,33 @@ public class ShipsController(IMapper mapper, ISender mediator) : ApiController
     private readonly ISender _mediator = mediator;
     private readonly IMapper _mapper = mapper;
 
-
-    [HttpPost("passenger")]
-    public async Task<IActionResult> RegisterPassengerShip(RegisterPassengerShipRequest request)
+    private async Task<IActionResult> RegisterShipAsync<TCommand>(TCommand command)
+        where TCommand : IRequest<ErrorOr<RegisterShipResult>>
     {
-        var command = _mapper.Map<RegisterPassengerShipCommand>(request);
-
         var result = await _mediator.Send(command);
 
         return result.Match(
-            contact => Ok(_mapper.Map<RegisterShipResult>(contact)),
+            ship => Ok(_mapper.Map<RegisterShipResult>(ship)),
             errors => Problem(errors)
         );
     }
 
-    [HttpPost("tanker")]
-    public async Task<IActionResult> RegisterTankerShip(RegisterTankerShipRequest request)
+    [HttpPost]
+    public async Task<IActionResult> RegisterShip(RegisterShipRequest request)
     {
-        var command = _mapper.Map<RegisterTankerShipCommand>(request);
-
-        var result = await _mediator.Send(command);
-
-        return result.Match(
-            contact => Ok(_mapper.Map<RegisterShipResult>(contact)),
-            errors => Problem(errors)
-        );
+        if (request.ShipType == ShipType.Passenger)
+        {
+            var command = _mapper.Map<RegisterPassengerShipCommand>(request);
+            return await RegisterShipAsync(command);
+        }
+        else if (request.ShipType == ShipType.Tanker)
+        {
+            var command = _mapper.Map<RegisterTankerShipCommand>(request);
+            return await RegisterShipAsync(command);
+        }
+        else
+        {
+            return BadRequest("Invalid ship type");
+        }
     }
 }

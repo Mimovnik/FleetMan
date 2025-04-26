@@ -12,7 +12,7 @@ public class RegisterPassengerShipTests(WebApplicationFactory<Program> factory) 
 {
     private readonly HttpClient _client = factory.CreateClient();
 
-    private const string _baseUrl = "/ships/passenger";
+    private const string _baseUrl = "/ships";
     
     public class ProblemDetailsWithErrors : ProblemDetails
     {
@@ -24,11 +24,12 @@ public class RegisterPassengerShipTests(WebApplicationFactory<Program> factory) 
     public async Task Given_ValidInput_When_RegisteringNewShip_Then_ReturnsResult()
     {
         // Arrange
-        var request = new RegisterPassengerShipRequest(
-           ImoNumber: "1234567",
-           Name: "Black Pearl",
-           Length: 100,
-           Width: 20
+        var request = new RegisterShipRequest(
+            ShipType: ShipType.Passenger,
+            ImoNumber: "1234567",
+            Name: "Black Pearl",
+            Length: 100,
+            Width: 20
         );
 
         // Act
@@ -52,11 +53,12 @@ public class RegisterPassengerShipTests(WebApplicationFactory<Program> factory) 
     public async Task Given_InvalidBothWidthAndLength_When_RegisteringNewShip_Then_BadRequestWithErrors(float invalidLength, float invalidWidth)
     {
         // Arrange
-        var request = new RegisterPassengerShipRequest(
-           ImoNumber: "0000000",
-           Name: "Titanic",
-           Length: invalidLength,
-           Width: invalidWidth
+        var request = new RegisterShipRequest(
+            ShipType: ShipType.Passenger,
+            ImoNumber: "0000000",
+            Name: "Titanic",
+            Length: invalidLength,
+            Width: invalidWidth
         );
 
         // Act
@@ -88,11 +90,12 @@ public class RegisterPassengerShipTests(WebApplicationFactory<Program> factory) 
     public async Task Given_ImoWrongLength_When_RegisteringNewShip_Then_BadRequestWithErrors(string longImoNumber)
     {
         // Arrange
-        var request = new RegisterPassengerShipRequest(
-           ImoNumber: longImoNumber,
-           Name: "Titanic",
-           Length: 100,
-           Width: 50
+        var request = new RegisterShipRequest(
+            ShipType: ShipType.Passenger,
+            ImoNumber: longImoNumber,
+            Name: "Titanic",
+            Length: 100,
+            Width: 50
         );
 
         // Act
@@ -121,11 +124,12 @@ public class RegisterPassengerShipTests(WebApplicationFactory<Program> factory) 
     public async Task Given_ImoWithLetters_When_RegisteringNewShip_Then_BadRequestWithErrors(string lettersImoNumber)
     {
         // Arrange
-        var request = new RegisterPassengerShipRequest(
-           ImoNumber: lettersImoNumber,
-           Name: "Titanic",
-           Length: 100,
-           Width: 50
+        var request = new RegisterShipRequest(
+            ShipType: ShipType.Passenger,
+            ImoNumber: lettersImoNumber,
+            Name: "Titanic",
+            Length: 100,
+            Width: 50
         );
 
         // Act
@@ -160,11 +164,12 @@ public class RegisterPassengerShipTests(WebApplicationFactory<Program> factory) 
     public async Task Given_InvalidImoChecksum_When_RegisteringNewShip_Then_BadRequestWithErrors(string wrongChecksumImoNumber)
     {
         // Arrange
-        var request = new RegisterPassengerShipRequest(
-           ImoNumber: wrongChecksumImoNumber,
-           Name: "Titanic",
-           Length: 100,
-           Width: 20
+        var request = new RegisterShipRequest(
+            ShipType: ShipType.Passenger,
+            ImoNumber: wrongChecksumImoNumber,
+            Name: "Titanic",
+            Length: 100,
+            Width: 20
         );
 
         // Act
