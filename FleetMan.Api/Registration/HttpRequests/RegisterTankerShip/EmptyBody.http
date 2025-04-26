@@ -1,0 +1,26 @@
+@host = http://localhost:5127
+POST {{host}}/ships/tanker
+Content-Type: application/json
+
+{
+}
+// Expected response
+# HTTP/1.1 409 Conflict
+
+# {
+#  ...
+#   "title": "One or more validation errors occurred.",
+#   "status": 400,
+#   "errors": {
+#     "Name": [
+#       "The Name field is required."
+#     ],
+#     "Tanks": [
+#       "The Tanks field is required."
+#     ],
+#     "ImoNumber": [
+#       "The ImoNumber field is required."
+#     ]
+#   },
+#  ...
+# }

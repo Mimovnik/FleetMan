@@ -1,0 +1,37 @@
+@host = http://localhost:5127
+POST {{host}}/ships/tanker
+Content-Type: application/json
+
+{
+  "imoNumber": "0000012",
+  "name": "Titanic",
+  "length": 50,
+  "width": 10,
+  "tanks": [
+    {
+      "fuelType": "Diesel",
+      "capacity": 1000
+    },
+    {
+      "fuelType": "HeavyFuel",
+      "capacity": -2000
+    },
+    {
+      "fuelType": "Diesel",
+      "capacity": 0
+    }
+  ]
+}
+// Expected response
+# HTTP/1.1 400 Bad Request
+
+# {
+#  ...
+#   "status": 400,
+#   "errors": {
+#     "Tank.NegativeCapacity": [
+#       "Tank capacity must be greater than 0."
+#     ]
+#   },
+#  ...
+# }
