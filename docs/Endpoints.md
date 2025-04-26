@@ -8,6 +8,6 @@ Returns the list of all registered ships (both passenger and tanker ships).
 
 Registers a ship.
 
-Request: [RegisterShipRequest.cs](../FleetMan.Contracts/Registration/RegisterShipRequest.cs)
+Request body: [RegisterShipRequest.cs](../FleetMan.Contracts/Registration/RegisterShipRequest.cs)
 
-Response: [RegisterShipResponse.cs](../FleetMan.Contracts/Registration/RegisterShipResponse.cs)
+Response body: [RegisterShipResponse.cs](../FleetMan.Contracts/Registration/RegisterShipResponse.cs)
