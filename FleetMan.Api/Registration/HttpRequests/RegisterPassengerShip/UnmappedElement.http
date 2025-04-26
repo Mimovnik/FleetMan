@@ -1,0 +1,28 @@
+@host = http://localhost:5127
+POST {{host}}/ships/passenger
+Content-Type: application/json
+
+{
+  "imoNumber": "0000000",
+  "name": "Titanic",
+  "length": 50,
+  "width": 10,
+  "keelType": "Monohull"
+}
+// Expected response
+# HTTP/1.1 400 Bad Request
+
+# {
+#  ...
+#   "title": "One or more validation errors occurred.",
+#   "status": 400,
+#   "errors": {
+#     "request": [
+#       "The request field is required."
+#     ],
+#     "$.keelType": [
+#       "The JSON property 'keelType' could not be mapped to any .NET member contained in type 'FleetMan.Contracts.Registration.RegisterPassengerShipRequest'."
+#     ]
+#   },
+#  ...
+# }
