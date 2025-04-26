@@ -10,7 +10,8 @@ This operation replaces the current list with a new one.
 
 ## Input
 
-- `passengers` - new list of passenger names
+- `passengers` - new list of passengers where each passenger has:
+    - `name`
 
 ## Output
 
@@ -18,7 +19,7 @@ None
 
 ## Business Rules / Validation
 
-- each `passegers` element must not be empty
+- each `passegers:name` must not be empty
 
 ## Domain Logic
 
@@ -27,4 +28,4 @@ None
 
 ## Errors / Edge Cases
 
-- Empty `passenger` name -> Validation error
+- Empty `passengers:name` -> Validation error
