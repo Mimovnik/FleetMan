@@ -38,8 +38,7 @@ public class RegisterTankerShipCommandValidatorTests
 
         var result = _validator.TestValidate(command);
 
-        result.ShouldHaveValidationErrorFor(x =>
-                    ((RegisterTankerShipCommand)x).Tanks)
+        result.ShouldHaveValidationErrorFor(x => x.Tanks)
               .WithErrorMessage(Errors.Ship.TankerShip.NoTanks.Description);
     }
 
@@ -63,10 +62,14 @@ public class RegisterTankerShipCommandValidatorTests
         );
 
         var result = _validator.TestValidate(command);
+        // Use strings instead of lambdas
+        // because FluentValidation.TestHelper can't handle indexers in lambdas
+        result.ShouldHaveValidationErrorFor("Tanks[0].Capacity")
+              .WithErrorMessage(Errors.Tank.InvalidCapacity.Description);
 
-        result.ShouldHaveValidationErrorFor(x =>
-                    ((RegisterTankerShipCommand)x).Tanks
-                    .All(t => t.Capacity == negativeCapacity))
+        result.ShouldNotHaveValidationErrorFor("Tanks[1].Capacity");
+
+        result.ShouldHaveValidationErrorFor("Tanks[2].Capacity")
               .WithErrorMessage(Errors.Tank.InvalidCapacity.Description);
     }
 }

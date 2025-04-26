@@ -6,7 +6,7 @@ namespace FleetMan.Application.Tests.Registration.Common;
 
 public abstract class RegisterShipCommandValidatorTests<TCommand, TValidator>
     where TCommand : RegisterShipCommand
-    where TValidator : RegisterShipCommandValidator, new()
+    where TValidator : RegisterShipCommandValidator<TCommand>, new()
 {
     protected readonly TValidator _validator = new();
 

@@ -2,7 +2,8 @@ using FleetMan.Application.Registration.Common;
 
 namespace FleetMan.Application.Registration.RegisterTankerShip;
 
-public class RegisterTankerShipCommandValidator : RegisterShipCommandValidator
+public class RegisterTankerShipCommandValidator
+ : RegisterShipCommandValidator<RegisterTankerShipCommand>
 {
     public RegisterTankerShipCommandValidator()
     {

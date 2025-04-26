@@ -3,7 +3,9 @@ using FluentValidation;
 
 namespace FleetMan.Application.Registration.Common;
 
-public abstract class RegisterShipCommandValidator : AbstractValidator<RegisterShipCommand>
+public abstract class RegisterShipCommandValidator<TCommand>
+ : AbstractValidator<TCommand>
+ where TCommand : RegisterShipCommand
 {
     public RegisterShipCommandValidator()
     {
