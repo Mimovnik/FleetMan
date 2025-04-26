@@ -2,7 +2,7 @@
 
 ## Status
 
-- todo
+- wip
 
 ## Description
 Update the list of passengers assigned to a registered passenger ship.
