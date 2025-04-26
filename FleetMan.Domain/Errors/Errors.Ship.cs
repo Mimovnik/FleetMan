@@ -22,22 +22,15 @@ public static class Errors
             code: "Ship.NotFound",
             description: "Could not find a ship with the given IMO number.");
 
-        public static class PassengerShip
-        {
-            public static Error NotFound => Error.Validation(
-                code: "PassengerShip.NotFound",
-                description: "Could not find a passenger ship with the given IMO number.");
-        }
+        public static Error NotPassenger => Error.Validation(
+            code: "Ship.NotPassenger",
+            description: "The ship is not a passenger ship.");
 
         public static class TankerShip
         {
             public static Error NoTanks => Error.Validation(
                 code: "TankerShip.NoTanks",
                 description: "A tanker must have at least one tank.");
-
-            public static Error NotFound => Error.Validation(
-                code: "TankerShip.NotFound",
-                description: "Could not find a tanker ship with the given IMO number.");
         }
     }
 
