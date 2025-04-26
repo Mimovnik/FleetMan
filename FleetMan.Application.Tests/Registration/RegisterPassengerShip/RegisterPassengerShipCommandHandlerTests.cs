@@ -1,15 +1,11 @@
-using System.Threading;
-using System.Threading.Tasks;
-using ErrorOr;
 using FleetMan.Application.Interfaces;
 using FleetMan.Application.Registration.RegisterPassengerShip;
 using FleetMan.Domain.Entities;
 using FleetMan.Domain.Errors;
 using FluentAssertions;
 using Moq;
-using Xunit;
 
-namespace FleetMan.Application.Tests.Registration;
+namespace FleetMan.Application.Tests.Registration.RegisterPassengerShip;
 
 public class RegisterPassengerShipCommandHandlerTests
 {
