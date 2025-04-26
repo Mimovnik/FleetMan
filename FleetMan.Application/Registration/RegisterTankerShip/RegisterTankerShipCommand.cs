@@ -1,7 +1,5 @@
-using ErrorOr;
 using FleetMan.Application.DTOs;
 using FleetMan.Application.Registration.Common;
-using MediatR;
 
 namespace FleetMan.Application.Registration.RegisterTankerShip;
 
@@ -11,4 +9,9 @@ public record RegisterTankerShipCommand(
     float Length,
     float Width,
     List<TankDto> Tanks
-    ) : IRequest<ErrorOr<RegisterShipResult>>;
+    ) : RegisterShipCommand(
+            ImoNumber: ImoNumber,
+            Name: Name,
+            Length: Length,
+            Width: Width
+        );
