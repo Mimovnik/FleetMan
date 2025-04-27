@@ -10,13 +10,18 @@ public abstract class RegisterShipCommandValidator<TCommand>
     public RegisterShipCommandValidator()
     {
         RuleFor(x => x.ImoNumber)
-            .Length(7).WithMessage(Errors.ImoNumber.InvalidFormat.Description)
-            .Matches(@"^\d{7}$").WithMessage(Errors.ImoNumber.InvalidFormat.Description);
+            .Matches(@"^\d{7}$")
+                .WithErrorCode(Errors.ImoNumber.InvalidFormat.Code)
+                .WithMessage(Errors.ImoNumber.InvalidFormat.Description);
 
         RuleFor(x => x.Length)
-            .GreaterThan(0).WithMessage(Errors.Ship.InvalidLength.Description);
+            .GreaterThan(0)
+                .WithErrorCode(Errors.Ship.InvalidLength.Code)
+                .WithMessage(Errors.Ship.InvalidLength.Description);
 
         RuleFor(x => x.Width)
-            .GreaterThan(0).WithMessage(Errors.Ship.InvalidWidth.Description);
+            .GreaterThan(0)
+                .WithErrorCode(Errors.Ship.InvalidWidth.Code)
+                .WithMessage(Errors.Ship.InvalidWidth.Description);
     }
 }

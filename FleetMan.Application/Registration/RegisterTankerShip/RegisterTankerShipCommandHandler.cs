@@ -45,6 +45,9 @@ public class RegisterTankerShipCommandHandler(IShipRepository repository)
             return imoNumberResult.Errors;
         var imoNumber = imoNumberResult.Value;
 
+        if (request.Tanks == null || request.Tanks.Count == 0)
+            return Errors.Ship.TankerShip.NoTanks;
+
         var tanksResult = CreateTanks(request.Tanks);
         if (tanksResult.IsError)
             return tanksResult.Errors;

@@ -9,11 +9,14 @@ public class UpdatePassengerListCommandValidator
     public UpdatePassengerListCommandValidator()
     {
         RuleFor(x => x.ShipImoNumber)
-            .Length(7).WithMessage(Errors.ImoNumber.InvalidFormat.Description)
-            .Matches(@"^\d{7}$").WithMessage(Errors.ImoNumber.InvalidFormat.Description);
+            .Matches(@"^\d{7}$")
+                .WithErrorCode(Errors.ImoNumber.InvalidFormat.Code)
+                .WithMessage(Errors.ImoNumber.InvalidFormat.Description);
 
         RuleForEach(x => x.PassengerNames)
-            .NotEmpty().WithMessage(Errors.Passenger.InvalidName.Description);
+            .NotEmpty()
+                .WithErrorCode(Errors.Passenger.InvalidName.Code)
+                .WithMessage(Errors.Passenger.InvalidName.Description);
     }
 }
 

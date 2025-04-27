@@ -1,3 +1,4 @@
+using ErrorOr;
 using FleetMan.Application.DTOs;
 using FleetMan.Application.Registration.RegisterTankerShip;
 using FleetMan.Application.Tests.Registration.Common;
@@ -39,7 +40,7 @@ public class RegisterTankerShipCommandValidatorTests
         var result = _validator.TestValidate(command);
 
         result.ShouldHaveValidationErrorFor(x => x.Tanks)
-              .WithErrorMessage("The Tanks field is required.");
+              .WithErrorMessage(Errors.Ship.TankerShip.NoTanks.Description);
     }
 
     [Fact]
