@@ -23,3 +23,7 @@ Response body: None
 ## `POST /ships/${imoNumber}/tanks/${tankNumber}`
 
 Refuel a specific tank on a TankerShip.
+
+Request body: [RefuelTankRequest.cs](../FleetMan.Contracts/RefuelTank/RefuelTankRequest.cs)
+
+Response body: [RefuelTankResponse.cs](../FleetMan.Contracts/RefuelTank/RefuelTankResponse.cs)
