@@ -16,7 +16,7 @@ Response body: [RegisterShipResponse.cs](../FleetMan.Contracts/Registration/Regi
 
 Update the list of passangers for the PassengerShip.
 
-Request body: [UpdatePassengerList.cs](../FleetMan.Contracts/UpdatePassengerListRequest.cs)
+Request body: [UpdatePassengerListRequest.cs](../FleetMan.Contracts/UpdatePassengerListRequest.cs)
 
 Response body: None
 
