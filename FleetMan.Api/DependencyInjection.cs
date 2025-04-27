@@ -13,6 +13,8 @@ public static class DependencyInjection
                 {
                     options.JsonSerializerOptions.UnmappedMemberHandling =
                         JsonUnmappedMemberHandling.Disallow;
+                    options.JsonSerializerOptions.Converters
+                        .Add(new JsonStringEnumConverter());
                 });
         return services;
     }
