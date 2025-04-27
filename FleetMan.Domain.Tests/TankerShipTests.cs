@@ -1,5 +1,6 @@
 using ErrorOr;
 using FleetMan.Domain.Entities;
+using FleetMan.Domain.Entities.Ships;
 using FluentAssertions;
 
 namespace FleetMan.Domain.Tests;

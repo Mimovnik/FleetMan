@@ -2,6 +2,7 @@ using ErrorOr;
 using FleetMan.Application.Interfaces;
 using FleetMan.Application.Registration.Common;
 using FleetMan.Domain.Entities;
+using FleetMan.Domain.Entities.Ships;
 using FleetMan.Domain.Errors;
 using MediatR;
 

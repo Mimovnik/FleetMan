@@ -1,4 +1,4 @@
-namespace FleetMan.Domain.Entities;
+namespace FleetMan.Domain.Entities.Ships;
 
 public abstract class Ship
 {

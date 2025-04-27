@@ -1,6 +1,6 @@
 using ErrorOr;
 
-namespace FleetMan.Domain.Entities;
+namespace FleetMan.Domain.Entities.Ships;
 
 public class PassengerShip : Ship
 {

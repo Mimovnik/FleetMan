@@ -1,4 +1,5 @@
 using FleetMan.Domain.Entities;
+using FleetMan.Domain.Entities.Ships;
 using Xunit;
 
 namespace FleetMan.Domain.Tests;

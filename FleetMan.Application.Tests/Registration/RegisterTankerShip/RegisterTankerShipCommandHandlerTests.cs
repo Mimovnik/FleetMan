@@ -2,6 +2,7 @@ using FleetMan.Application.DTOs;
 using FleetMan.Application.Interfaces;
 using FleetMan.Application.Registration.RegisterTankerShip;
 using FleetMan.Domain.Entities;
+using FleetMan.Domain.Entities.Ships;
 using FleetMan.Domain.Errors;
 using FluentAssertions;
 using Moq;

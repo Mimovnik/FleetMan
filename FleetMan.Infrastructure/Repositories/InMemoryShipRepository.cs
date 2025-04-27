@@ -2,6 +2,7 @@ using System.Collections.Concurrent;
 using ErrorOr;
 using FleetMan.Application.Interfaces;
 using FleetMan.Domain.Entities;
+using FleetMan.Domain.Entities.Ships;
 using FleetMan.Domain.Errors;
 
 namespace FleetMan.Infrastructure.Repositories;
