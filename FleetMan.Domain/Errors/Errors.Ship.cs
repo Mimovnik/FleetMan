@@ -26,6 +26,10 @@ public static partial class Errors
             code: "Ship.NotPassenger",
             description: "The ship is not a passenger ship.");
 
+        public static Error NotTanker => Error.Validation(
+            code: "Ship.NotTanker",
+            description: "The ship is not a tanker ship.");
+
         public static class TankerShip
         {
             public static Error NoTanks => Error.Validation(
