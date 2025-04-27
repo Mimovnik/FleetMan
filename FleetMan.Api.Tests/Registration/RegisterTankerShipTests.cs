@@ -1,7 +1,9 @@
 using System.Net;
 using System.Net.Http.Json;
 using System.Text.Json.Serialization;
+using ErrorOr;
 using FleetMan.Contracts.Registration;
+using FleetMan.Domain.Errors;
 using FluentAssertions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Testing;
@@ -87,11 +89,11 @@ public class RegisterTankerShipTests(WebApplicationFactory<Program> factory) : I
 
         problemDetails.Errors.Should().NotBeNull();
 
-        problemDetails.Errors.Should().ContainKey("Ship.NegativeWidth");
-        problemDetails.Errors["Ship.NegativeWidth"].Should().Contain("Ship width must be greater than 0.");
+        problemDetails.Errors.Should().ContainKey(Errors.Ship.InvalidWidth.Code);
+        problemDetails.Errors[Errors.Ship.InvalidWidth.Code].Should().ContainSingle(Errors.Ship.InvalidWidth.Description);
 
-        problemDetails.Errors.Should().ContainKey("Ship.NegativeLength");
-        problemDetails.Errors["Ship.NegativeLength"].Should().Contain("Ship length must be greater than 0.");
+        problemDetails.Errors.Should().ContainKey(Errors.Ship.InvalidLength.Code);
+        problemDetails.Errors[Errors.Ship.InvalidLength.Code].Should().ContainSingle(Errors.Ship.InvalidLength.Description);
     }
 
     [Theory]
@@ -130,8 +132,8 @@ public class RegisterTankerShipTests(WebApplicationFactory<Program> factory) : I
 
         problemDetails.Errors.Should().NotBeNull();
 
-        problemDetails.Errors.Should().ContainKey("ImoNumber.InvalidFormat");
-        problemDetails.Errors["ImoNumber.InvalidFormat"].Should().Contain("The IMO number must be 7 characters long and contain only digits.");
+        problemDetails.Errors.Should().ContainSingle(Errors.ImoNumber.InvalidFormat.Code);
+        problemDetails.Errors[Errors.ImoNumber.InvalidFormat.Code].Should().ContainSingle(Errors.ImoNumber.InvalidFormat.Description);
     }
 
     [Theory]
@@ -170,8 +172,8 @@ public class RegisterTankerShipTests(WebApplicationFactory<Program> factory) : I
 
         problemDetails.Errors.Should().NotBeNull();
 
-        problemDetails.Errors.Should().ContainKey("ImoNumber.InvalidFormat");
-        problemDetails.Errors["ImoNumber.InvalidFormat"].Should().Contain("The IMO number must be 7 characters long and contain only digits.");
+        problemDetails.Errors.Should().ContainSingle(Errors.ImoNumber.InvalidFormat.Code);
+        problemDetails.Errors[Errors.ImoNumber.InvalidFormat.Code].Should().ContainSingle(Errors.ImoNumber.InvalidFormat.Description);
     }
 
     [Theory]
@@ -215,8 +217,8 @@ public class RegisterTankerShipTests(WebApplicationFactory<Program> factory) : I
         problemDetails.Status.Should().Be(400);
 
         problemDetails.Errors.Should().NotBeNull();
-        problemDetails.Errors.Should().ContainKey("ImoNumber.InvalidChecksum");
-        problemDetails.Errors["ImoNumber.InvalidChecksum"].Should().Contain("The provided IMO number has invalid checksum.");
+        problemDetails.Errors.Should().ContainSingle(Errors.ImoNumber.InvalidChecksum.Code);
+        problemDetails.Errors[Errors.ImoNumber.InvalidChecksum.Code].Should().ContainSingle(Errors.ImoNumber.InvalidChecksum.Description);
     }
 
     [Theory]
@@ -253,8 +255,8 @@ public class RegisterTankerShipTests(WebApplicationFactory<Program> factory) : I
         problemDetails.Status.Should().Be(400);
 
         problemDetails.Errors.Should().NotBeNull();
-        problemDetails.Errors.Should().ContainKey("Tank.InvalidFuelType");
-        problemDetails.Errors["Tank.InvalidFuelType"].Should().Contain("Fuel type must be one of: 'Diesel', 'HeavyFuel'.");
+        problemDetails.Errors.Should().ContainSingle(Errors.Tank.InvalidFuelType.Code);
+        problemDetails.Errors[Errors.Tank.InvalidFuelType.Code].Should().ContainSingle(Errors.Tank.InvalidFuelType.Description);
     }
 
     [Theory]
@@ -291,8 +293,8 @@ public class RegisterTankerShipTests(WebApplicationFactory<Program> factory) : I
         problemDetails.Status.Should().Be(400);
 
         problemDetails.Errors.Should().NotBeNull();
-        problemDetails.Errors.Should().ContainKey("Tank.NegativeCapacity");
-        problemDetails.Errors["Tank.NegativeCapacity"].Should().Contain("Tank capacity must be greater than 0.");
+        problemDetails.Errors.Should().ContainSingle(Errors.Tank.InvalidCapacity.Code);
+        problemDetails.Errors[Errors.Tank.InvalidCapacity.Code].Should().Contain(Errors.Tank.InvalidCapacity.Description);
     }
 
     [Fact]
@@ -320,7 +322,7 @@ public class RegisterTankerShipTests(WebApplicationFactory<Program> factory) : I
         problemDetails.Status.Should().Be(400);
 
         problemDetails.Errors.Should().NotBeNull();
-        problemDetails.Errors.Should().ContainKey("Tanks");
-        problemDetails.Errors["Tanks"].Should().Contain("The Tanks field is required.");
+        problemDetails.Errors.Should().ContainSingle(Errors.Ship.TankerShip.NoTanks.Code);
+        problemDetails.Errors[Errors.Ship.TankerShip.NoTanks.Code].Should().ContainSingle(Errors.Ship.TankerShip.NoTanks.Description);
     }
 }

@@ -2,6 +2,7 @@ using System.Net;
 using System.Net.Http.Json;
 using System.Text.Json.Serialization;
 using FleetMan.Contracts.Registration;
+using FleetMan.Domain.Errors;
 using FluentAssertions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Testing;
@@ -75,11 +76,11 @@ public class RegisterPassengerShipTests(WebApplicationFactory<Program> factory) 
 
         problemDetails.Errors.Should().NotBeNull();
 
-        problemDetails.Errors.Should().ContainKey("Ship.NegativeWidth");
-        problemDetails.Errors["Ship.NegativeWidth"].Should().Contain("Ship width must be greater than 0.");
+        problemDetails.Errors.Should().ContainKey(Errors.Ship.InvalidWidth.Code);
+        problemDetails.Errors[Errors.Ship.InvalidWidth.Code].Should().ContainSingle(Errors.Ship.InvalidWidth.Description);
 
-        problemDetails.Errors.Should().ContainKey("Ship.NegativeLength");
-        problemDetails.Errors["Ship.NegativeLength"].Should().Contain("Ship length must be greater than 0.");
+        problemDetails.Errors.Should().ContainKey(Errors.Ship.InvalidLength.Code);
+        problemDetails.Errors[Errors.Ship.InvalidLength.Code].Should().ContainSingle(Errors.Ship.InvalidLength.Description);
     }
 
     [Theory]
@@ -112,8 +113,8 @@ public class RegisterPassengerShipTests(WebApplicationFactory<Program> factory) 
 
         problemDetails.Errors.Should().NotBeNull();
 
-        problemDetails.Errors.Should().ContainKey("ImoNumber.InvalidFormat");
-        problemDetails.Errors["ImoNumber.InvalidFormat"].Should().Contain("The IMO number must be 7 characters long and contain only digits.");
+        problemDetails.Errors.Should().ContainSingle(Errors.ImoNumber.InvalidFormat.Code);
+        problemDetails.Errors[Errors.ImoNumber.InvalidFormat.Code].Should().ContainSingle(Errors.ImoNumber.InvalidFormat.Description);
     }
 
     [Theory]
@@ -146,8 +147,8 @@ public class RegisterPassengerShipTests(WebApplicationFactory<Program> factory) 
 
         problemDetails.Errors.Should().NotBeNull();
 
-        problemDetails.Errors.Should().ContainKey("ImoNumber.InvalidFormat");
-        problemDetails.Errors["ImoNumber.InvalidFormat"].Should().Contain("The IMO number must be 7 characters long and contain only digits.");
+        problemDetails.Errors.Should().ContainSingle(Errors.ImoNumber.InvalidFormat.Code);
+        problemDetails.Errors[Errors.ImoNumber.InvalidFormat.Code].Should().ContainSingle(Errors.ImoNumber.InvalidFormat.Description);
     }
 
     [Theory]
@@ -185,7 +186,7 @@ public class RegisterPassengerShipTests(WebApplicationFactory<Program> factory) 
         problemDetails.Status.Should().Be(400);
 
         problemDetails.Errors.Should().NotBeNull();
-        problemDetails.Errors.Should().ContainKey("ImoNumber.InvalidChecksum");
-        problemDetails.Errors["ImoNumber.InvalidChecksum"].Should().Contain("The provided IMO number has invalid checksum.");
+        problemDetails.Errors.Should().ContainSingle(Errors.ImoNumber.InvalidChecksum.Code);
+        problemDetails.Errors[Errors.ImoNumber.InvalidChecksum.Code].Should().ContainSingle(Errors.ImoNumber.InvalidChecksum.Description);
     }
 }
