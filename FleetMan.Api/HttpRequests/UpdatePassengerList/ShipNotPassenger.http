@@ -1,0 +1,52 @@
+@host = http://localhost:5127
+
+# Register Tanker Ship
+POST {{host}}/ships
+Content-Type: application/json
+
+{
+  "shipType": "Tanker",
+  "imoNumber": "1000007",
+  "name": "Titanic",
+  "length": 50,
+  "width": 10,
+  "tanks": [
+    {
+      "fuelType": "Diesel",
+      "capacity": 1000
+    },
+    {
+      "fuelType": "HeavyFuel",
+      "capacity": 2000
+    },
+    {
+      "fuelType": "Diesel",
+      "capacity": 3000.245
+    }
+  ]
+}
+
+# Update Passenger List
+
+POST {{host}}/ships/1000007/passengers
+Content-Type: application/json
+
+{
+  "passengers": [
+    "John Doe",
+    "Jane Smith"
+  ]
+}
+
+// Expected response for the first request:
+# HTTP/1.1 400 Bad Request
+# {
+#   ...
+#   "status": 400,
+#   "errors": {
+#   "Ship.NotPassenger": [
+#        "The ship is not a passenger ship."
+#      ]
+#   },
+#   ...
+# }

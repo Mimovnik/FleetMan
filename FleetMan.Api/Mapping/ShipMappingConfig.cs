@@ -1,18 +1,15 @@
-using FleetMan.Application.Registration.RegisterPassengerShip;
-using FleetMan.Contracts.Registration;
+using FleetMan.Application.UpdatePassengerList;
+using FleetMan.Contracts;
 using Mapster;
 
-namespace FleetMan.Api.Controllers;
+namespace FleetMan.Api.Mapping;
 
-public static class MapsterConfig
+public class ShipsMappingConfig : IRegister
 {
-    public static void ConfigureMappings()
+    public void Register(TypeAdapterConfig config)
     {
-        TypeAdapterConfig<RegisterShipRequest, RegisterPassengerShipCommand>
-            .NewConfig()
-            .Map(dest => dest.ImoNumber, src => src.ImoNumber)
-            .Map(dest => dest.Name, src => src.Name)
-            .Map(dest => dest.Length, src => src.Length)
-            .Map(dest => dest.Width, src => src.Width);
+        config.NewConfig<(string, UpdatePassengerListRequest), UpdatePassengerListCommand>()
+            .Map(dest => dest.ShipImoNumber, src => src.Item1)
+            .Map(dest => dest.PassengerNames, src => src.Item2.Passengers);
     }
 }

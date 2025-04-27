@@ -1,5 +1,5 @@
 @host = http://localhost:5127
-@imoNumber = 0000000
+@imoNumber = 0010005
 POST {{host}}/ships/{{imoNumber}}/passengers
 Content-Type: application/json
 
@@ -11,4 +11,14 @@ Content-Type: application/json
 }
 
 // Expected response for the first request:
-# HTTP/1.1 204 No Content
+# HTTP/1.1 400 Bad Request
+# {
+#   ...
+#   "status": 400,
+#   "errors": {
+#     "Ship.NotFound": [
+#       "Could not find a ship with the given IMO number."
+#     ]
+#   },
+#   ...
+# }

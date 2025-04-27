@@ -2,6 +2,8 @@ using ErrorOr;
 using FleetMan.Application.Registration.Common;
 using FleetMan.Application.Registration.RegisterPassengerShip;
 using FleetMan.Application.Registration.RegisterTankerShip;
+using FleetMan.Application.UpdatePassengerList;
+using FleetMan.Contracts;
 using FleetMan.Contracts.Registration;
 using MapsterMapper;
 using MediatR;
@@ -43,5 +45,18 @@ public class ShipsController(IMapper mapper, ISender mediator) : ApiController
         {
             return BadRequest("Invalid ship type");
         }
+    }
+
+    [HttpPost("{imoNumber}/passengers")]
+    public async Task<IActionResult> UpdatePassengerList(string imoNumber, UpdatePassengerListRequest request)
+    {
+        var command = _mapper.Map<UpdatePassengerListCommand>((imoNumber, request));
+
+        var result = await _mediator.Send(command);
+
+        return result.Match(
+            _ => NoContent(),
+            errors => Problem(errors)
+        );
     }
 }
