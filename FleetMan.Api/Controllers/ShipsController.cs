@@ -62,7 +62,7 @@ public class ShipsController(IMapper mapper, ISender mediator) : ApiController
         );
     }
 
-    [HttpPost("{imoNumber}/tanks/{tankNumber}")]
+    [HttpPost("{imoNumber}/tanks/{tankNumber}/refuel")]
     public async Task<IActionResult> RefuelTank(string imoNumber, int tankNumber, RefuelTankRequest request)
     {
         var command = _mapper.Map<RefuelTankCommand>((imoNumber, tankNumber, request));

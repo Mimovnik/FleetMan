@@ -27,7 +27,7 @@ public class RefuelTankTests
         public required Dictionary<string, string[]> Errors { get; set; }
     }
 
-    private static string Url(string imoNumber, string tankNumber) => $"{_baseUrl}/{imoNumber}/tanks/{tankNumber}";
+    private static string Url(string imoNumber, string tankNumber) => $"{_baseUrl}/{imoNumber}/tanks/{tankNumber}/refuel";
 
     private static async Task RegisterValidPassengerShip(HttpClient client, string imoNumber)
     {

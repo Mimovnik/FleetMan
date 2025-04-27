@@ -20,7 +20,7 @@ Request body: [UpdatePassengerListRequest.cs](../FleetMan.Contracts/UpdatePassen
 
 Response body: None
 
-## `POST /ships/${imoNumber}/tanks/${tankNumber}`
+## `POST /ships/${imoNumber}/tanks/${tankNumber}/refuel`
 
 Refuel a specific tank on a TankerShip.
 
