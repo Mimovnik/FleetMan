@@ -1,3 +1,4 @@
+using FleetMan.Application.DrainTank;
 using FleetMan.Application.RefuelTank;
 using FleetMan.Application.UpdatePassengerList;
 using FleetMan.Contracts.RefuelTank;
@@ -19,5 +20,9 @@ public class ShipsMappingConfig : IRegister
             .Map(dest => dest.TankNumber, src => src.TankNumber)
             .Map(dest => dest.Amount, src => src.Request.FuelAmount)
             .Map(dest => dest.FuelType, src => src.Request.FuelType);
+
+        config.NewConfig<(string ImoNumber, int TankNumber), DrainTankCommand>()
+            .Map(dest => dest.ImoNumber, src => src.ImoNumber)
+            .Map(dest => dest.TankNumber, src => src.TankNumber);
     }
 }

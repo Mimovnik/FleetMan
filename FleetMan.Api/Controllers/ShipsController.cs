@@ -1,4 +1,5 @@
 using ErrorOr;
+using FleetMan.Application.DrainTank;
 using FleetMan.Application.RefuelTank;
 using FleetMan.Application.Registration.Common;
 using FleetMan.Application.Registration.RegisterPassengerShip;
@@ -71,6 +72,19 @@ public class ShipsController(IMapper mapper, ISender mediator) : ApiController
 
         return result.Match(
             result => Ok(_mapper.Map<RefuelTankResult>(result)),
+            errors => Problem(errors)
+        );
+    }
+
+    [HttpPost("{imoNumber}/tanks/{tankNumber}/drain")]
+    public async Task<IActionResult> DrainTank(string imoNumber, int tankNumber)
+    {
+        var command = _mapper.Map<DrainTankCommand>((imoNumber, tankNumber));
+
+        var result = await _mediator.Send(command);
+
+        return result.Match(
+            result => NoContent(),
             errors => Problem(errors)
         );
     }

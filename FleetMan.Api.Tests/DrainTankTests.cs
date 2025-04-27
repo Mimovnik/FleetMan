@@ -200,7 +200,7 @@ public class DrainTankTests
 
         var result = await response.Content.ReadFromJsonAsync<RefuelTankResponse>();
         result.Should().NotBeNull();
-        result.FuelAmount.Should().Be(124.45f);
+        result.FuelAmount.Should().Be(123.45f);
         result.FuelType.Should().Be("HeavyFuel");
     }
 }
