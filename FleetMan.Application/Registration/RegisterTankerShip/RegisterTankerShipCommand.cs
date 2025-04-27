@@ -8,7 +8,7 @@ public record RegisterTankerShipCommand(
     string Name,
     float Length,
     float Width,
-    List<TankDto> Tanks
+    List<TankDto>? Tanks
     ) : RegisterShipCommand(
             ImoNumber: ImoNumber,
             Name: Name,
