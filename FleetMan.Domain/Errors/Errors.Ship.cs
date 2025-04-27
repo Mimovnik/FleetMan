@@ -2,7 +2,7 @@ using ErrorOr;
 
 namespace FleetMan.Domain.Errors;
 
-public static class Errors
+public static partial class Errors
 {
     public static class Ship
     {
@@ -32,34 +32,5 @@ public static class Errors
                 code: "TankerShip.NoTanks",
                 description: "A tanker must have at least one tank.");
         }
-    }
-
-    public static class ImoNumber
-    {
-        public static Error InvalidFormat => Error.Validation(
-            code: "ImoNumber.InvalidFormat",
-            description: "The IMO number must be 7 characters long and contain only digits.");
-
-        public static Error InvalidChecksum => Error.Validation(
-            code: "ImoNumber.InvalidChecksum",
-            description: "The provided IMO number has invalid checksum.");
-    }
-
-    public static class Tank
-    {
-        public static Error InvalidCapacity => Error.Validation(
-            code: "Tank.NegativeCapacity",
-            description: "Tank capacity must be greater than 0.");
-
-        public static Error InvalidFuelType => Error.Validation(
-            code: "Tank.InvalidFuelType",
-            description: "Fuel type must be one of: 'Diesel', 'HeavyFuel'.");
-    }
-
-    public static class Passenger
-    {
-        public static Error InvalidName => Error.Validation(
-            code: "Passenger.InvalidName",
-            description: "Passenger name cannot be empty.");
     }
 }
