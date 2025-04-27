@@ -18,7 +18,7 @@ public static partial class Errors
             code: "Ship.NegativeWidth",
             description: "Ship width must be greater than 0.");
 
-        public static Error NotFound => Error.Validation(
+        public static Error NotFound => Error.NotFound(
             code: "Ship.NotFound",
             description: "Could not find a ship with the given IMO number.");
 
