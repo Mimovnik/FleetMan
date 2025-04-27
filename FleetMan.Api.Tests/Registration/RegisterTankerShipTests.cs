@@ -294,4 +294,33 @@ public class RegisterTankerShipTests(WebApplicationFactory<Program> factory) : I
         problemDetails.Errors.Should().ContainKey("Tank.NegativeCapacity");
         problemDetails.Errors["Tank.NegativeCapacity"].Should().Contain("Tank capacity must be greater than 0.");
     }
+
+    [Fact]
+    public async Task Given_NoTanks_When_RegisteringNewShip_Then_BadRequestWithErrors()
+    {
+        // Arrange
+        var request = new RegisterShipRequest(
+            ShipType: ShipType.Tanker,
+            ImoNumber: "1234567",
+            Name: "Titanic",
+            Length: 100,
+            Width: 20
+        );
+
+        // Act
+        var response = await _client.PostAsJsonAsync(_baseUrl, request);
+
+        // Assert
+        response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
+
+        var problemDetails = await response.Content.ReadFromJsonAsync<ProblemDetailsWithErrors>();
+
+        problemDetails.Should().NotBeNull();
+        problemDetails.Title.Should().Be("One or more validation errors occurred.");
+        problemDetails.Status.Should().Be(400);
+
+        problemDetails.Errors.Should().NotBeNull();
+        problemDetails.Errors.Should().ContainKey("Tanks");
+        problemDetails.Errors["Tanks"].Should().Contain("The Tanks field is required.");
+    }
 }
