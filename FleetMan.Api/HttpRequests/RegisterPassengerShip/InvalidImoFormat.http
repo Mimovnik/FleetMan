@@ -1,12 +1,13 @@
 @host = http://localhost:5127
-POST {{host}}/ships/passenger
+POST {{host}}/ships
 Content-Type: application/json
 
 {
-  "imoNumber": "0001004",
+  "shipType": "Passenger",
+  "imoNumber": "12345678",
   "name": "Titanic",
   "length": 50,
-  "width": -10
+  "width": 10
 }
 
 // Expected response:
@@ -17,8 +18,8 @@ Content-Type: application/json
 #   "title": "One or more validation errors occurred.",
 #   "status": 400,
 #   "errors": {
-#     "Ship.NegativeWidth": [
-#       "Ship width must be greater than 0."
+#     "ImoNumber.InvalidFormat": [
+#       "The IMO number must be 7 characters long and contain only digits."
 #     ]
 #   },
 #   ...

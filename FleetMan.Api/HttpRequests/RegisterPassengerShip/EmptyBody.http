@@ -1,5 +1,5 @@
 @host = http://localhost:5127
-POST {{host}}/ships/passenger
+POST {{host}}/ships
 Content-Type: application/json
 
 {
@@ -14,6 +14,9 @@ Content-Type: application/json
 #   "errors": {
 #     "Name": [
 #       "The Name field is required."
+#     ],
+#     "ShipType": [
+#       "The ShipType field is required."
 #     ],
 #     "ImoNumber": [
 #       "The ImoNumber field is required."

@@ -1,8 +1,9 @@
 @host = http://localhost:5127
-POST {{host}}/ships/tanker
+POST {{host}}/ships
 Content-Type: application/json
 
 {
+  "shipType": "Tanker",
   "imoNumber": "0000012",
   "name": "Titanic",
   "length": 50,

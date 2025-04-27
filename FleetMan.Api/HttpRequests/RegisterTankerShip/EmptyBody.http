@@ -1,11 +1,13 @@
 @host = http://localhost:5127
-POST {{host}}/ships/tanker
+POST {{host}}/ships
 Content-Type: application/json
 
 {
 }
+
 // Expected response
-# HTTP/1.1 409 Conflict
+
+# HTTP/1.1 400 Bad Request
 
 # {
 #  ...
@@ -15,8 +17,8 @@ Content-Type: application/json
 #     "Name": [
 #       "The Name field is required."
 #     ],
-#     "Tanks": [
-#       "The Tanks field is required."
+#     "ShipType": [
+#       "The ShipType field is required."
 #     ],
 #     "ImoNumber": [
 #       "The ImoNumber field is required."

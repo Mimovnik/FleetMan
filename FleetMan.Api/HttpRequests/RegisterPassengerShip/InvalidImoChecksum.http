@@ -1,8 +1,9 @@
 @host = http://localhost:5127
-POST {{host}}/ships/passenger
+POST {{host}}/ships
 Content-Type: application/json
 
 {
+  "shipType": "Passenger",
   "imoNumber": "0000007",
   "name": "Titanic",
   "length": 50,
@@ -17,7 +18,7 @@ Content-Type: application/json
 #   "title": "One or more validation errors occurred.",
 #   "status": 400,
 #   "errors": {
-#     "Ship.InvalidImoChecksum": [
+#     "ImoNumber.InvalidChecksum": [
 #       "The provided IMO number has invalid checksum."
 #     ]
 #   },
