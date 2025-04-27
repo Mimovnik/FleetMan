@@ -1,0 +1,40 @@
+@host = http://localhost:8080
+@imoNumber = 0000000
+@tankNumber = 1
+
+# Register a new tanker ship
+
+POST {{host}}/ships
+Content-Type: application/json
+
+{
+  "shipType": "Tanker",
+  "imoNumber": "0000000",
+  "name": "Titanic",
+  "length": 50,
+  "width": 10,
+  "tanks": [
+    {
+      "capacity": 1000
+    },
+    {
+      "capacity": 2000
+    },
+    {
+      "capacity": 3000.245
+    }
+  ]
+}
+
+# Refuel 
+
+POST {{host}}/ships/{{imoNumber}}/tanks/{{tankNumber}}
+Content-Type: application/json
+
+{
+    "FuelAmount": 999,
+    "FuelType": "Diesel"
+}
+
+// Expected response for the first request:
+# HTTP/1.1 204 No Content

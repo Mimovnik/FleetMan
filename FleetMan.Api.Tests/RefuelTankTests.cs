@@ -86,7 +86,7 @@ public class RefuelTankTests
         var response = await client.PostAsJsonAsync(Url(imo, "1"), request);
 
         // Assert
-        response.StatusCode.Should().Be(HttpStatusCode.NoContent);
+        response.StatusCode.Should().Be(HttpStatusCode.OK);
     }
 
 
@@ -114,7 +114,7 @@ public class RefuelTankTests
         var response = await client.PostAsJsonAsync(Url(imo, tankNumber), request);
 
         // Assert
-        response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
+        response.StatusCode.Should().Be(HttpStatusCode.NotFound);
     }
 
     [Theory]
@@ -136,16 +136,11 @@ public class RefuelTankTests
         // Assert
         response.StatusCode.Should().Be(HttpStatusCode.NotFound);
 
-        var problemDetails = await response.Content.ReadFromJsonAsync<ProblemDetailsWithErrors>();
+        var problemDetails = await response.Content.ReadFromJsonAsync<ProblemDetails>();
 
         problemDetails.Should().NotBeNull();
-        problemDetails.Title.Should().Be("One or more validation errors occurred.");
+        problemDetails.Title.Should().Be(Errors.Ship.NotFound.Description);
         problemDetails.Status.Should().Be(404);
-
-        problemDetails.Errors.Should().NotBeNull();
-
-        problemDetails.Errors.Should().ContainSingle(Errors.Ship.NotFound.Code);
-        problemDetails.Errors[Errors.Ship.NotFound.Code].Should().ContainSingle(Errors.Ship.NotFound.Description);
     }
 
     [Theory]
@@ -205,16 +200,11 @@ public class RefuelTankTests
         // Assert
         response.StatusCode.Should().Be(HttpStatusCode.NotFound);
 
-        var problemDetails = await response.Content.ReadFromJsonAsync<ProblemDetailsWithErrors>();
+        var problemDetails = await response.Content.ReadFromJsonAsync<ProblemDetails>();
 
         problemDetails.Should().NotBeNull();
-        problemDetails.Title.Should().Be("One or more validation errors occurred.");
+        problemDetails.Title.Should().Be(Errors.Tank.NotFound.Description);
         problemDetails.Status.Should().Be(404);
-
-        problemDetails.Errors.Should().NotBeNull();
-
-        problemDetails.Errors.Should().ContainSingle(Errors.Tank.NotFound.Code);
-        problemDetails.Errors[Errors.Tank.NotFound.Code].Should().ContainSingle(Errors.Tank.NotFound.Description);
     }
 
     [Theory]

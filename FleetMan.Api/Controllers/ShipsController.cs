@@ -1,8 +1,10 @@
 using ErrorOr;
+using FleetMan.Application.RefuelTank;
 using FleetMan.Application.Registration.Common;
 using FleetMan.Application.Registration.RegisterPassengerShip;
 using FleetMan.Application.Registration.RegisterTankerShip;
 using FleetMan.Application.UpdatePassengerList;
+using FleetMan.Contracts.RefuelTank;
 using FleetMan.Contracts.Registration;
 using FleetMan.Contracts.UpdatePassengerList;
 using MapsterMapper;
@@ -56,6 +58,19 @@ public class ShipsController(IMapper mapper, ISender mediator) : ApiController
 
         return result.Match(
             _ => NoContent(),
+            errors => Problem(errors)
+        );
+    }
+
+    [HttpPost("{imoNumber}/tanks/{tankNumber}")]
+    public async Task<IActionResult> RefuelTank(string imoNumber, int tankNumber, RefuelTankRequest request)
+    {
+        var command = _mapper.Map<RefuelTankCommand>((imoNumber, tankNumber, request));
+
+        var result = await _mediator.Send(command);
+
+        return result.Match(
+            result => Ok(_mapper.Map<RefuelTankResult>(result)),
             errors => Problem(errors)
         );
     }
