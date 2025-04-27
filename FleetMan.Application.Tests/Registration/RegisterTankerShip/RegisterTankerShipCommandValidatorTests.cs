@@ -26,6 +26,23 @@ public class RegisterTankerShipCommandValidatorTests
     }
 
     [Fact]
+    public void Validate_TanksIsNull_TanksFieldRequiredError()
+    {
+        var command = new RegisterTankerShipCommand(
+            ImoNumber: "9074729",
+            Name: "Titanic",
+            Length: 269.1f,
+            Width: 28.2f,
+            null
+        );
+
+        var result = _validator.TestValidate(command);
+
+        result.ShouldHaveValidationErrorFor(x => x.Tanks)
+              .WithErrorMessage("The Tanks field is required.");
+    }
+
+    [Fact]
     public void Validate_NoTanks_NoTanksError()
     {
         var command = new RegisterTankerShipCommand(
