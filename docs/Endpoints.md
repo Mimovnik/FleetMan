@@ -19,3 +19,7 @@ Update the list of passangers for the PassengerShip.
 Request body: [UpdatePassengerList.cs](../FleetMan.Contracts/UpdatePassengerListRequest.cs)
 
 Response body: None
+
+## `POST /ships/${imoNumber}/tanks/${tankNumber}`
+
+Refuel a specific tank on a TankerShip.
