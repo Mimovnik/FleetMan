@@ -27,3 +27,11 @@ Refuel a specific tank on a TankerShip.
 Request body: [RefuelTankRequest.cs](../FleetMan.Contracts/RefuelTank/RefuelTankRequest.cs)
 
 Response body: [RefuelTankResponse.cs](../FleetMan.Contracts/RefuelTank/RefuelTankResponse.cs)
+
+## `POST /ships/${imoNumber}/tanks/${tankNumber}/drain`
+
+Drains a specific tank on a TankerShip.
+
+Request body: None
+
+Response body: None
