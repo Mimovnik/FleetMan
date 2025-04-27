@@ -38,7 +38,7 @@ public class RefuelTankCommandHandlerTests
 
         var command = new RefuelTankCommand(
             ImoNumber: "9074729",
-            TankIndex: 1,
+            TankNumber: 1,
             Amount: 10,
             FuelType: "Diesel"
         );
@@ -59,7 +59,7 @@ public class RefuelTankCommandHandlerTests
 
         var command = new RefuelTankCommand(
             ImoNumber: validImo,
-            TankIndex: 1,
+            TankNumber: 1,
             Amount: 10,
             FuelType: "Diesel"
         );
@@ -92,7 +92,7 @@ public class RefuelTankCommandHandlerTests
 
         var command = new RefuelTankCommand(
             ImoNumber: validImo,
-            TankIndex: 9,
+            TankNumber: 9,
             Amount: 10,
             FuelType: "Diesel"
         );

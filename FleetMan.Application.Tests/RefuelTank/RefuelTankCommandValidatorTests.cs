@@ -13,7 +13,7 @@ public class RefuelTankCommandValidatorTests
     {
         var command = new RefuelTankCommand(
             ImoNumber: "9074729",
-            TankIndex: 1,
+            TankNumber: 1,
             Amount: 1000.0f,
             FuelType: "Diesel"
         );
@@ -21,7 +21,7 @@ public class RefuelTankCommandValidatorTests
         var result = _validator.TestValidate(command);
 
         result.ShouldNotHaveValidationErrorFor(x => x.ImoNumber);
-        result.ShouldNotHaveValidationErrorFor(x => x.TankIndex);
+        result.ShouldNotHaveValidationErrorFor(x => x.TankNumber);
         result.ShouldNotHaveValidationErrorFor(x => x.Amount);
         result.ShouldNotHaveValidationErrorFor(x => x.FuelType);
     }
@@ -31,7 +31,7 @@ public class RefuelTankCommandValidatorTests
     {
         var command = new RefuelTankCommand(
             ImoNumber: "1234567",
-            TankIndex: 1,
+            TankNumber: 1,
             Amount: -2.0f,
             FuelType: "Diesel"
         );
@@ -49,7 +49,7 @@ public class RefuelTankCommandValidatorTests
     {
         var command = new RefuelTankCommand(
             ImoNumber: "1234567",
-            TankIndex: 5,
+            TankNumber: 5,
             Amount: 2.0f,
             FuelType: fuelType
         );
