@@ -1,8 +1,7 @@
 using FleetMan.Domain.Entities;
 using FleetMan.Domain.Entities.Ships;
-using Xunit;
 
-namespace FleetMan.Domain.Tests;
+namespace FleetMan.Domain.Tests.ShipTests;
 
 public class PassengerShipTests
 {

@@ -24,10 +24,10 @@ public class RegisterTankerShipCommandHandlerTests
     private static List<Tank> CreateValidTanks()
     {
         return [
-            Tank.Create(Diesel, 1024.123f).Value,
-            Tank.Create(HeavyFuel, 10).Value,
-            Tank.Create(Diesel, 10000).Value,
-            Tank.Create(HeavyFuel, 124.5f).Value,
+            Tank.Create(1024.123f).Value,
+            Tank.Create(10).Value,
+            Tank.Create(10000).Value,
+            Tank.Create(124.5f).Value,
         ];
     }
 
@@ -48,8 +48,8 @@ public class RegisterTankerShipCommandHandlerTests
             .ReturnsAsync(true);
 
         var command = new RegisterTankerShipCommand("9074729", "Titanic", 300, 50, [
-            new TankDto("Diesel", 1024.123f),
-            new TankDto("HeavyFuel", 10),
+            new TankDto(1024.123f),
+            new TankDto(10),
         ]);
 
         // Act
@@ -72,8 +72,8 @@ public class RegisterTankerShipCommandHandlerTests
         .Returns(Task.CompletedTask);
 
         var command = new RegisterTankerShipCommand("9074729", "Titanic", 300, 50, [
-                new TankDto("Diesel", 1024.123f),
-                new TankDto("HeavyFuel", 10),
+                new TankDto(1024.123f),
+                new TankDto(10),
             ]);
 
         var result = await _handler.Handle(command, CancellationToken.None);

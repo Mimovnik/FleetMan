@@ -20,9 +20,9 @@ public class RegisterTankerShipCommandValidatorTests
             width,
             Tanks:
             [
-                new TankDto("Diesel", 1000.24f),
-                new TankDto("HeavyFuel", 2000),
-                new TankDto("Diesel", 5000)
+                new TankDto(1000.24f),
+                new TankDto(2000),
+                new TankDto(5000)
             ]);
     }
 
@@ -73,9 +73,9 @@ public class RegisterTankerShipCommandValidatorTests
             Width: 28.2f,
             Tanks:
             [
-                new("Diesel", negativeCapacity),
-                new("HeavyFuel", 2000),
-                new("HeavyFuel", negativeCapacity)
+                new(negativeCapacity),
+                new(2000),
+                new(negativeCapacity)
             ]
         );
 

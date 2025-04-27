@@ -8,10 +8,7 @@ public enum ShipType
     Tanker,
 }
 
-public record Tank(
-    string FuelType,
-    float Capacity
-);
+public record Tank(float Capacity);
 
 public record RegisterShipRequest(
     [Required] ShipType? ShipType,

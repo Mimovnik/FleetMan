@@ -98,7 +98,7 @@ public class UpdatePassengerListCommandHandlerTests
                 length: 300,
                 width: 50,
                 tanks: [
-                    Tank.Create(Tank.TankFuelType.Diesel, 1000).Value
+                    Tank.Create(1000).Value
                 ]
             ).Value);
 

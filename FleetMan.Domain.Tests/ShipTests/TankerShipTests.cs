@@ -3,7 +3,7 @@ using FleetMan.Domain.Entities;
 using FleetMan.Domain.Entities.Ships;
 using FluentAssertions;
 
-namespace FleetMan.Domain.Tests;
+namespace FleetMan.Domain.Tests.ShipTests;
 
 public class TankerShipTests
 {
@@ -15,10 +15,10 @@ public class TankerShipTests
             269.1,
             28.2,
             [
-                Tank.Create(Tank.TankFuelType.Diesel, 1000).Value,
-                Tank.Create(Tank.TankFuelType.HeavyFuel, 2000).Value,
-                Tank.Create(Tank.TankFuelType.HeavyFuel, 2000).Value,
-                Tank.Create(Tank.TankFuelType.Diesel, 2000).Value,
+                Tank.Create(1000).Value,
+                Tank.Create(2000).Value,
+                Tank.Create(2000).Value,
+                Tank.Create(2000).Value,
             ]);
     }
 
@@ -71,10 +71,10 @@ public class TankerShipTests
         var width = 28.2;
         var tanks = new List<Tank>
         {
-            Tank.Create(Tank.TankFuelType.Diesel, 1000).Value,
-            Tank.Create(Tank.TankFuelType.HeavyFuel, 2000).Value,
-            Tank.Create(Tank.TankFuelType.HeavyFuel, 2000).Value,
-            Tank.Create(Tank.TankFuelType.Diesel, 2000).Value,
+            Tank.Create(1000).Value,
+            Tank.Create(2000).Value,
+            Tank.Create(2000).Value,
+            Tank.Create(2000).Value,
         };
 
         var result = TankerShip.Create(imoNumber, name, length, width, tanks);
@@ -94,10 +94,10 @@ public class TankerShipTests
         var width = 28.2;
         var tanks = new List<Tank>
         {
-            Tank.Create(Tank.TankFuelType.Diesel, 1000).Value,
-            Tank.Create(Tank.TankFuelType.HeavyFuel, 2000).Value,
-            Tank.Create(Tank.TankFuelType.HeavyFuel, 2000).Value,
-            Tank.Create(Tank.TankFuelType.Diesel, 2000).Value,
+            Tank.Create(1000).Value,
+            Tank.Create(2000).Value,
+            Tank.Create(2000).Value,
+            Tank.Create(2000).Value,
         };
 
         var result = TankerShip.Create(imoNumber, name, length, width, tanks);
@@ -116,10 +116,10 @@ public class TankerShipTests
         var width = 28.2;
         var tanks = new List<Tank>
         {
-            Tank.Create(Tank.TankFuelType.Diesel, 1000).Value,
-            Tank.Create(Tank.TankFuelType.HeavyFuel, 2000).Value,
-            Tank.Create(Tank.TankFuelType.HeavyFuel, 2000).Value,
-            Tank.Create(Tank.TankFuelType.Diesel, 2000).Value,
+            Tank.Create(1000).Value,
+            Tank.Create(2000).Value,
+            Tank.Create(2000).Value,
+            Tank.Create(2000).Value,
         };
 
         var result = TankerShip.Create(imoNumber, name, length, width, tanks);
@@ -138,10 +138,10 @@ public class TankerShipTests
         var length = 28.2;
         var tanks = new List<Tank>
         {
-            Tank.Create(Tank.TankFuelType.Diesel, 1000).Value,
-            Tank.Create(Tank.TankFuelType.HeavyFuel, 2000).Value,
-            Tank.Create(Tank.TankFuelType.HeavyFuel, 2000).Value,
-            Tank.Create(Tank.TankFuelType.Diesel, 2000).Value,
+            Tank.Create(1000).Value,
+            Tank.Create(2000).Value,
+            Tank.Create(2000).Value,
+            Tank.Create(2000).Value,
         };
 
         var result = TankerShip.Create(imoNumber, name, length, width, tanks);
@@ -158,10 +158,10 @@ public class TankerShipTests
         var width = 28.2;
         var tanks = new List<Tank>
         {
-            Tank.Create(Tank.TankFuelType.Diesel, 1000).Value,
-            Tank.Create(Tank.TankFuelType.HeavyFuel, 2000).Value,
-            Tank.Create(Tank.TankFuelType.HeavyFuel, 2000).Value,
-            Tank.Create(Tank.TankFuelType.Diesel, 2000).Value,
+            Tank.Create(1000).Value,
+            Tank.Create(2000).Value,
+            Tank.Create(2000).Value,
+            Tank.Create(2000).Value,
         };
 
         var result = TankerShip.Create(imoNumber, name, length, width, tanks);

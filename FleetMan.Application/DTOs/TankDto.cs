@@ -1,6 +1,3 @@
 namespace FleetMan.Application.DTOs;
 
-public record TankDto(
-    string FuelType,
-    float Capacity
-);
+public record TankDto(float Capacity);

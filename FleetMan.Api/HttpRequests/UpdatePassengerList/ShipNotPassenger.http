@@ -12,15 +12,12 @@ Content-Type: application/json
   "width": 10,
   "tanks": [
     {
-      "fuelType": "Diesel",
       "capacity": 1000
     },
     {
-      "fuelType": "HeavyFuel",
       "capacity": 2000
     },
     {
-      "fuelType": "Diesel",
       "capacity": 3000.245
     }
   ]

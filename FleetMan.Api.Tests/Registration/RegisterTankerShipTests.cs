@@ -33,10 +33,10 @@ public class RegisterTankerShipTests(WebApplicationFactory<Program> factory) : I
            Length: 100,
            Width: 20,
            Tanks: [
-               new Tank("Diesel", 1024.123f),
-               new Tank("HeavyFuel", 10),
-               new Tank("Diesel", 10000),
-               new Tank("HeavyFuel", 124.5f),
+               new Tank(1024.123f),
+               new Tank(10),
+               new Tank(10000),
+               new Tank(124.5f),
            ]
         );
 
@@ -68,10 +68,10 @@ public class RegisterTankerShipTests(WebApplicationFactory<Program> factory) : I
            Length: invalidLength,
            Width: invalidWidth,
            Tanks: [
-                new Tank("Diesel", 1024.123f),
-                new Tank("HeavyFuel", 10),
-                new Tank("Diesel", 10000),
-                new Tank("HeavyFuel", 124.5f),
+                new Tank(1024.123f),
+                new Tank(10),
+                new Tank(10000),
+                new Tank(124.5f),
               ]
         );
 
@@ -111,10 +111,10 @@ public class RegisterTankerShipTests(WebApplicationFactory<Program> factory) : I
             Length: 100,
             Width: 50,
             Tanks: [
-                new Tank("Diesel", 1024.123f),
-                new Tank("HeavyFuel", 10),
-                new Tank("Diesel", 10000),
-                new Tank("HeavyFuel", 124.5f),
+                new Tank(1024.123f),
+                new Tank(10),
+                new Tank(10000),
+                new Tank(124.5f),
             ]
         );
 
@@ -151,10 +151,10 @@ public class RegisterTankerShipTests(WebApplicationFactory<Program> factory) : I
             Length: 100,
             Width: 50,
             Tanks: [
-                new Tank("Diesel", 1024.123f),
-                new Tank("HeavyFuel", 10),
-                new Tank("Diesel", 10000),
-                new Tank("HeavyFuel", 124.5f),
+                new Tank(1024.123f),
+                new Tank(10),
+                new Tank(10000),
+                new Tank(124.5f),
             ]
         );
 
@@ -197,10 +197,10 @@ public class RegisterTankerShipTests(WebApplicationFactory<Program> factory) : I
             Length: 100,
             Width: 20,
             Tanks: [
-                new Tank("Diesel", 1024.123f),
-                new Tank("HeavyFuel", 10),
-                new Tank("Diesel", 10000),
-                new Tank("HeavyFuel", 124.5f),
+                new Tank(1024.123f),
+                new Tank(10),
+                new Tank(10000),
+                new Tank(124.5f),
             ]
         );
 
@@ -222,44 +222,6 @@ public class RegisterTankerShipTests(WebApplicationFactory<Program> factory) : I
     }
 
     [Theory]
-    [InlineData("Gasoline")] 
-    [InlineData("fuelOil")] 
-    [InlineData("")] 
-    public async Task Given_InvalidTankFuelType_When_RegisteringNewShip_Then_BadRequestWithErrors(string wrongFuelType)
-    {
-        // Arrange
-        var request = new RegisterShipRequest(
-            ShipType: ShipType.Tanker,
-            ImoNumber: "1234567",
-            Name: "Titanic",
-            Length: 100,
-            Width: 20,
-            Tanks: [
-                new Tank("Diesel", 1024.123f),
-                new Tank("HeavyFuel", 10),
-                new Tank(wrongFuelType, 10000),
-                new Tank(wrongFuelType, 124.5f),
-            ]
-        );
-
-        // Act
-        var response = await _client.PostAsJsonAsync(_baseUrl, request);
-
-        // Assert
-        response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
-
-        var problemDetails = await response.Content.ReadFromJsonAsync<ProblemDetailsWithErrors>();
-
-        problemDetails.Should().NotBeNull();
-        problemDetails.Title.Should().Be("One or more validation errors occurred.");
-        problemDetails.Status.Should().Be(400);
-
-        problemDetails.Errors.Should().NotBeNull();
-        problemDetails.Errors.Should().ContainSingle(Errors.Tank.InvalidFuelType.Code);
-        problemDetails.Errors[Errors.Tank.InvalidFuelType.Code].Should().ContainSingle(Errors.Tank.InvalidFuelType.Description);
-    }
-
-    [Theory]
     [InlineData(0)] 
     [InlineData(-10)] 
     [InlineData(-123.45f)] 
@@ -273,10 +235,10 @@ public class RegisterTankerShipTests(WebApplicationFactory<Program> factory) : I
             Length: 100,
             Width: 20,
             Tanks: [
-                new Tank("Diesel", 1024.123f),
-                new Tank("HeavyFuel", wrongCapacity),
-                new Tank("Diesel", wrongCapacity),
-                new Tank("HeavyFuel", 124.5f),
+                new Tank(1024.123f),
+                new Tank(wrongCapacity),
+                new Tank(wrongCapacity),
+                new Tank(124.5f),
             ]
         );
 

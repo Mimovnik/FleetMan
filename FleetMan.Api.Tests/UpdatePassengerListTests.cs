@@ -1,7 +1,7 @@
 using System.Net;
 using System.Net.Http.Json;
 using System.Text.Json.Serialization;
-using FleetMan.Contracts;
+using FleetMan.Contracts.UpdatePassengerList;
 using FleetMan.Contracts.Registration;
 using FleetMan.Domain.Errors;
 using FluentAssertions;
@@ -52,9 +52,9 @@ public class UpdatePassengerListTests
             Length: 100,
             Width: 20,
             Tanks: [
-                new Tank("Diesel", 1000),
-                new Tank("HeavyFuel", 1000),
-                new Tank("Diesel", 5000),
+                new Tank(1000),
+                new Tank(1000),
+                new Tank(5000),
             ]
         );
 

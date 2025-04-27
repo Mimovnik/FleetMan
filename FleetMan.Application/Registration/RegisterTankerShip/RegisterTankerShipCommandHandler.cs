@@ -21,12 +21,7 @@ public class RegisterTankerShipCommandHandler(IShipRepository repository)
 
         foreach (var tank in tankDtos)
         {
-            bool fuelTypeIsCorrect = Enum.TryParse(tank.FuelType, out Tank.TankFuelType fuelTypeResult);
-
-            if (!fuelTypeIsCorrect)
-                return Errors.Tank.InvalidFuelType;
-
-            var tankResult = Tank.Create(fuelTypeResult, tank.Capacity);
+            var tankResult = Tank.Create(tank.Capacity);
 
             if (tankResult.IsError)
                 return tankResult.Errors;
