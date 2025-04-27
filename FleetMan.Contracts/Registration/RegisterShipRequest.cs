@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace FleetMan.Contracts.Registration;
 
 public enum ShipType
@@ -12,7 +14,7 @@ public record Tank(
 );
 
 public record RegisterShipRequest(
-    ShipType ShipType,
+    [Required] ShipType? ShipType,
     string ImoNumber,
     string Name,
     float Length,
