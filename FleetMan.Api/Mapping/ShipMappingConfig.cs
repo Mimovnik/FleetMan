@@ -1,5 +1,5 @@
 using FleetMan.Application.UpdatePassengerList;
-using FleetMan.Contracts;
+using FleetMan.Contracts.UpdatePassengerList;
 using Mapster;
 
 namespace FleetMan.Api.Mapping;
